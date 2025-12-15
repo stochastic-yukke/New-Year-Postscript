@@ -1,0 +1,398 @@
+%!PS-Adobe-3.0
+<< /PageSize [280 420] >> setpagedevice
+
+/randomwidth {
+    rand 3 mod 2 add
+    setlinewidth
+} def
+
+/randomcolour {
+    rand 5 mod 2 div
+    rand 2 mod 2 div
+    rand 2 mod 2 div
+    setrgbcolor
+} def
+
+/square {
+    0 .8 .5 setrgbcolor
+    /y exch def /x exch def
+    x y moveto
+    x 8 add y lineto
+    x 8 add y 8 add lineto
+    x y 8 add lineto
+    fill
+} def
+
+/Catmull-Rom {
+    /y3 exch def /x3 exch def /y2 exch def /x2 exch def /y1 exch def /x1 exch def
+    /x12 x2 currentpoint pop sub 6 div x1 add def
+    /y12 y2 currentpoint exch pop sub 6 div y1 add def
+    /x22 x2 x3 x1 sub 6 div sub def
+    /y22 y2 y3 y1 sub 6 div sub def
+    x12 y12 x22 y22 x3 y3 curveto
+} def
+
+/OutOfOutlineProjective {
+    newpath
+    0 1 0 1 moveto translate
+    0 1 67 {
+        10 0 5 5 lineto lineto
+        .5 .8 .1 setrgbcolor
+        stroke
+        0 6 0 6 moveto translate
+    } for
+    newpath
+    .5 1 .5 1 moveto translate
+    0 1 44 {
+        0 10 5 5 lineto lineto
+        1 .1 1 setrgbcolor
+        stroke
+        6 0 6 0 moveto translate
+    } for
+    newpath
+    -1 10 -1 10 moveto translate
+    0 1 67 {
+        10 0 5 -5 lineto lineto
+        .5 .8 .1 setrgbcolor
+        stroke
+        0 -6 0 -6 moveto translate
+    } for
+    newpath
+    10 -1 10 -1 moveto translate
+    0 1 44 {
+        0 -10 -5 -5 lineto lineto
+        1 .1 1 setrgbcolor
+        stroke
+        -6 0 -6 0 moveto translate
+    } for
+} def
+
+/QuadraticCurves {
+    {
+        /epsln exch def
+        /sw 0 def
+        newpath
+        0 1 360 {
+            /arg exch def
+            /denom 1 epsln arg cos mul add def
+            denom 0 ne { /r 20 denom div def
+            /x r arg cos mul def
+            /y r arg sin mul def
+            arg 90 div setlinewidth
+            sw 0 eq { x y moveto /sw 1 def }{ x y lineto } ifelse
+            } { /r 0 def } ifelse
+        } for
+        stroke
+    } for
+} def
+
+/QuadraticCurves2 {
+    {
+        /epsln exch def
+        /sw 0 def
+        newpath
+        220 1 510 {
+            /arg exch def
+            /denom 1 epsln arg cos mul add def
+            denom 0 ne { /r 20 denom div def
+            /x r 35 add arg cos mul 45 epsln div sub def
+            /y r 25 add arg sin mul def
+            randomwidth
+            sw 0 eq { x y moveto /sw 1 def }{ x y lineto } ifelse
+            } { /r 0 def } ifelse
+        } for
+        stroke
+    } for
+} def
+
+/BackStripe {
+    36.9 rotate %Tan^{-1}(105/140)=Tan^{-1}(3/4)=36.86...
+    .82 .66 0 setrgbcolor
+    .2 .05 .9  1 .1 1.2  1.2 .02 1.32  1.4 .1 2  2 .5 7  7 1 15 QuadraticCurves QuadraticCurves QuadraticCurves QuadraticCurves QuadraticCurves QuadraticCurves2
+} def
+
+/ZebraOutline {
+    newpath
+    .8 setgray
+    53.5 147.2 moveto
+    50.3 138.2 46.2 135.8 39.9 136.7 Catmull-Rom
+    36.1 139.8 34.3 143.4 33.1 147.8 Catmull-Rom
+    35.3 159.5 33.8 171.6 29.7 185.2 Catmull-Rom
+    30.3 196.5 32.7 205.7 39.3 212.7 Catmull-Rom
+    33.8 215.8 26.7 220 25.2 225.8 Catmull-Rom
+    24.3 231.4 25.7 236.2 30 240 Catmull-Rom
+    44.3 227.5 lineto 40.6 228.3 lineto 50 231.2 lineto
+    55 235.1 59.1 237.4 65.3 228.6 Catmull-Rom
+    70 228 73.4 229 75.7 224.3 Catmull-Rom
+    79.3 225.9 82.3 224 84.8 222 Catmull-Rom
+    88.8 223 90 220 91.4 215.8 Catmull-Rom
+    95 215.4 95.5 212.4 96.2 209.5 Catmull-Rom
+    101.3 206.5 lineto 103.3 203.4 lineto 109.9 198.3 lineto
+    124.3 203.5 153.7 203.5 178 201 Catmull-Rom
+    239.8 212.3 273.9 203.6 291 170.2 Catmull-Rom
+    286.1 30.9 lineto 283.6 29 281.1 27.8 278.4 26.5 Catmull-Rom
+    276.3 23.1 lineto 276.2 19 lineto 258.7 18.8 lineto 267.9 31.3 lineto 270.8 35.2 lineto
+    273.1 52.5 273.7 65.1 273.2 74.8 Catmull-Rom
+    271 82.1 lineto
+    268.3 67.8 264.7 57.4 262.5 47.9 Catmull-Rom
+    262.1 43.4 lineto
+    258.9 41.9 257.7 38.1 259.8 35.6 Catmull-Rom
+    263.3 31.6 lineto 253.2 18.4 lineto
+    252.1 23.5 250.3 26 248.5 27.9 Catmull-Rom
+    247.9 46.6 lineto 248.7 52.7 lineto 257.3 72.9 lineto
+    258.2 77.3 258.2 82.4 256.4 87.2 Catmull-Rom
+    248.6 95.2 240.7 101.5 230.3 113 Catmull-Rom
+    225.6 116.8 lineto
+    207.1 106.2 171.3 104.8 147.9 107.8 Catmull-Rom
+    145.4 105.5 lineto
+    153.3 93.9 163.4 79.4 166.2 71.7 Catmull-Rom
+    168.8 64.8 174.3 60 179.2 53.6 Catmull-Rom
+    180.9 47.1 lineto 181.3 37.2 lineto
+    179.6 32.7 180 30 180 25.8 Catmull-Rom
+    180.9 15.9 lineto 179.2 13.4 lineto 169.4 12.2 lineto 169.4 20.2 lineto
+    168.7 26.8 168.1 32.6 166.4 38.6 Catmull-Rom
+    164 45.6 lineto
+    158.2 56.8 154 63.4 147.2 70.8 Catmull-Rom
+    128.5 91.5 lineto 118.5 70.4 lineto
+    116.3 63.2 114.7 57.2 111.6 51.9 Catmull-Rom
+    110 30 lineto
+    108.5 25 104.3 22.5 101.4 21.4 Catmull-Rom
+    100 15 lineto 98 13.5 lineto 86.2 14.1 lineto 87.5 19.5 lineto 91.7 22 lineto
+    95 30 lineto 97.7 33.8 lineto 99.8 36.1 lineto 100.7 63.6 lineto
+    101.3 68.9 102.7 73.5 104.5 77.6 Catmull-Rom
+    106.9 87.7 107.1 95.3 106.8 106.1 Catmull-Rom
+    105.8 109.9 lineto
+    101.1 118 96.2 125.2 93.4 130.7 Catmull-Rom
+    90.9 134.5 lineto
+    84.2 138.2 78.8 143.8 75.1 148.7 Catmull-Rom
+    70.8 153.2 66.6 156.4 60.8 159.6 Catmull-Rom
+    58.6 161.6 lineto
+    57.4 156.4 57.4 153.4 55 150 Catmull-Rom
+    closepath fill
+    stroke
+} def
+
+/ZebraStripe {
+    newpath
+    .22 .2 .2 setrgbcolor
+    53.5 147.2 moveto
+    50.3 138.2 46.2 135.8 39.9 136.7 Catmull-Rom
+    36.1 139.8 34.3 143.4 33.1 147.8 Catmull-Rom
+    40.4 157.5 47.3 158 53.5 147.2 Catmull-Rom
+    fill
+
+    newpath
+    44 190 moveto 45 193 48 196 50 197 Catmull-Rom 53 188 45 195 44 190 Catmull-Rom fill
+    randomcolour
+    0 3 9 {
+        /k exch def
+        randomcolour
+        35 k add 149 k add moveto 38 k add 170 25 k add 200 40 k add 210 Catmull-Rom stroke
+    } for
+
+    randomcolour
+    40 212 moveto 33 217 lineto 27 223 lineto 26 224 lineto 25 228 26 235 30 239 Catmull-Rom 44 229 lineto stroke
+    randomcolour
+    44 224 moveto 49 230 lineto 57 235 lineto stroke
+    57 235 moveto 61 232 65 227 62 220 Catmull-Rom stroke
+    3 setlinewidth
+    randomcolour
+    30 230 moveto 40 220 lineto stroke
+    randomcolour
+    52 222 moveto 57 230 lineto stroke
+    randomcolour
+    44 229 moveto 48 230 lineto 44 224 lineto fill
+
+    45 158 moveto 46 158 50 157 55 149 Catmull-Rom stroke
+    randomcolour
+    45 165 moveto 46 165 50 164 57 154 Catmull-Rom stroke
+    randomcolour
+    44 172 moveto 45 172 49 171 58 162 Catmull-Rom stroke
+    randomcolour
+    43 180 moveto 44 180 48 179 60 170 Catmull-Rom stroke
+    randomcolour
+    48 185 moveto 53 184 58 180 63 175 Catmull-Rom stroke
+    randomcolour
+    52 190 moveto 56 188 56 190 66 182 Catmull-Rom stroke
+    randomcolour
+    45 205 moveto 50 204 55 195 68 190 Catmull-Rom stroke
+    randomcolour
+    45 212 moveto 50 212 53 208 62 202 Catmull-Rom stroke
+
+    .5 .5 3 {
+        randomcolour
+        /w exch def
+        1.5 w mul setlinewidth
+        69 9 w mul add 232 7 w mul sub moveto 73 8 w mul add 201 7 w mul sub 70 8 w mul add 181 7 w mul sub 60 8 w mul add 164 7 w mul sub Catmull-Rom stroke
+    } for
+
+    .8 .1 .1 setrgbcolor
+    160 107 moveto 150 150 160 200 170 190 Catmull-Rom
+    180 180 lineto 190 195 lineto 200 170 lineto
+    190 155 210 170 215 160 Catmull-Rom 220 140 225 120 210 110 Catmull-Rom 185 105 lineto fill
+    185 105 moveto 182 99 183 98 185 97 Catmull-Rom 187 98 188 99 185 105 Catmull-Rom fill
+
+    .22 .2 .2 setrgbcolor
+    86 13 moveto 88 20 lineto 100 22 lineto 110 28 lineto 106 23 lineto 101 21 lineto 100 13 lineto fill
+    169 12 moveto 169 23 lineto 180 25 lineto 180 14 lineto fill
+    253 18 moveto 252 24 lineto 248 29 lineto 258 38 lineto 263.5 30 lineto fill
+    258 18 moveto 265 27 lineto 281 28 lineto 277 25 lineto 276 23 lineto 276 19 lineto fill
+    2 setlinewidth
+    randomcolour
+    93 25 moveto 110 28 lineto stroke
+    randomcolour
+    168 28 moveto 180 29 lineto stroke
+    randomcolour
+    248 35 moveto 262 46 lineto stroke
+    randomcolour
+    267 30 moveto 286 31.5 lineto stroke
+    1 setlinewidth randomcolour
+    271 81 moveto 250 120 lineto stroke
+    randomcolour
+    128 91 moveto 144 115 lineto stroke
+} def
+
+/Text {
+    18 383 moveto
+    /Times-Bold findfont
+    26 scalefont setfont
+    1 0 0 setrgbcolor
+    (New ) show
+    0 setgray
+    (Year ) show
+    1 0 0 setrgbcolor
+    (New ) show
+    0 setgray
+    (Game!) show
+
+    16 362 moveto
+    /Times-Bold findfont
+    15 scalefont setfont
+    (Theorem ) show
+    /Times-Italic findfont
+    15 scalefont setfont
+    ((Ax-Grothendieck).) show
+    23 356 moveto
+    23 350 lineto 32 353 lineto fill
+    37 357 moveto
+    42 348 lineto 47 357 lineto stroke
+    40 352 moveto 44 352 lineto stroke
+    49 345 moveto
+    /Times-Italic findfont
+    16 scalefont setfont
+    (n) show
+    60 352 moveto
+    66 349 lineto 60 346 lineto stroke
+    59 345 moveto 66 345 lineto stroke
+    68.5 344 moveto
+    /Times findfont
+    15 scalefont setfont
+    (1 ,  ) show
+    /Times-Italic findfont
+    16 scalefont setfont
+    (P ) show
+    /Times findfont
+    16 scalefont setfont
+    (: ) show
+    126.5 353 moveto
+    114 365 114 334 126.5 346.5 Catmull-Rom
+    stroke
+    119 355 moveto 119 345 lineto stroke
+    127.5 353 moveto
+    /Times-Italic findfont
+    9 scalefont setfont
+    (n) show
+    133 350 moveto 145 350 lineto stroke
+    143 352 moveto 145 350 lineto 143 348 lineto stroke
+
+    160 353 moveto
+    148 365 148 334 160.5 346.5 Catmull-Rom
+    stroke
+    153 355 moveto 153 345 lineto stroke
+    161.5 353 moveto
+    (n) show
+    168 347 moveto
+    /Times findfont
+    16 scalefont setfont
+    ( be  poly.& inj.) show
+    145 332 moveto 160 332 lineto stroke
+    155 335 moveto 164 330 lineto 155 325 lineto stroke
+    145 328 moveto 160 328 lineto stroke
+    168 327 moveto
+    ( : bij.) show
+    250 330 moveto 245 325 lineto 250 320 lineto 255 325 lineto fill
+
+    20 300 moveto 70 300 lineto stroke
+    55 310 moveto 85 290 lineto 55 270 lineto stroke
+    20 280 moveto 70 280 lineto stroke
+
+    90 305 moveto 110 305 lineto 110 275 lineto 90 275 lineto stroke
+    110 290 moveto 90 290 lineto stroke
+    0 .8 .5 setrgbcolor
+    120 300 moveto (Garden) show 135 285 moveto (of) show 125 270 moveto (Eden) show
+    /Times findfont 20 scalefont setfont 0 setgray
+    ( ,) show
+    180 285 moveto (such as :) show
+
+} def
+
+/Garden {
+    91 115 square 91 124 square                91 142 square                91 160 square                91 178 square
+    100 115 square 100 124 square 100 133 square                100 151 square 100 160 square 100 169 square
+    109 115 square                109 133 square 109 142 square 109 151 square                109 169 square 109 178 square
+    118 115 square 118 124 square 118 133 square 118 142 square                118 160 square 118 169 square 118 178 square
+    127 115 square 127 124 square                127 142 square 127 151 square 127 160 square                127 178 square
+    136 115 square 136 124 square 136 133 square                136 151 square 136 160 square 136 169 square
+    145 115 square                145 133 square 145 142 square 145 151 square                145 169 square 145 178 square
+    154 115 square 154 124 square 154 133 square 154 142 square                154 160 square 154 169 square 154 178 square
+    163 115 square 163 124 square                163 142 square 163 151 square 163 160 square                163 178 square
+    172 115 square 172 124 square 172 133 square                172 151 square 172 160 square 172 169 square
+    181 115 square                181 133 square 181 142 square 181 151 square                181 169 square 181 178 square
+    190 115 square 190 124 square 190 133 square 190 142 square                190 160 square 190 169 square 190 178 square
+    199 115 square 199 124 square                199 142 square 217 151 square 199 160 square 199 169 square
+    208 115 square                208 133 square 208 142 square                208 160 square                208 178 square
+    217 115 square 217 124 square                217 142 square 217 151 square 217 160 square 217 169 square
+                   226 124 square 226 133 square                226 151 square                226 169 square 226 178 square
+    235 115 square 235 124 square                235 142 square 235 151 square 235 160 square 235 169 square
+    244 115 square 244 124 square 244 133 square 244 142 square                244 160 square                244 178 square
+    253 115 square                253 133 square                253 151 square 253 160 square 253 169 square
+    262 115 square 262 124 square 262 133 square 262 142 square                262 160 square                262 178 square
+    271 115 square                271 133 square                271 151 square 271 160 square 271 169 square
+    255 100 moveto
+    /Times findfont
+    25 scalefont setfont
+    (...) show
+} def
+
+newpath
+0 0 280 0 280 420 0 420 moveto lineto lineto lineto
+closepath fill
+
+1 setgray
+10 10 10 410 270 410 270 10 moveto lineto lineto lineto
+closepath fill
+
+gsave
+140 105 translate
+BackStripe
+grestore
+
+1 setgray
+0 250 0 420 280 420 280 250 moveto lineto lineto lineto
+closepath fill
+
+gsave
+OutOfOutlineProjective
+grestore
+
+gsave
+-7 -7 translate
+ZebraOutline
+ZebraStripe
+grestore
+
+Garden
+
+Text
+
+showpage
